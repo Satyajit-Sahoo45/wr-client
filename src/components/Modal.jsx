@@ -6,8 +6,7 @@ import toast from "react-hot-toast";
 
 export const BookingModal = ({ retreat }) => {
     const { isModalOpen, setIsModalOpen } = useRetreatContext();
-    const user = JSON.parse(localStorage.getItem('user'))
-    console.log(retreat, ";;;;;;;")
+    const user = JSON.parse(localStorage.getItem('user'));
     const [formData, setFormData] = useState({
         user_id: user?.id || "",
         user_name: "",
@@ -43,12 +42,11 @@ export const BookingModal = ({ retreat }) => {
         }
     };
 
-
     return (
         <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 focus:border-none rounded-lg max-w-2xl w-full max-h-max shadow-lg transition-all duration-500 ease-in-out"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 focus:border-none rounded-lg w-full max-w-2xl sm:max-w-lg md:max-w-2xl max-h-full md:max-h-3/4 shadow-lg transition-all duration-500 ease-in-out overflow-y-auto scrollbar-custom"
             overlayClassName="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center justify-center focus:border-none"
         >
             <h2 className="text-lg mb-4 text-center font-bold">Book</h2>
@@ -63,7 +61,6 @@ export const BookingModal = ({ retreat }) => {
                             value={formData.user_name}
                             onChange={handleChange}
                             className="w-full p-2 rounded bg-gray-200 text-gray-900 focus:outline-0"
-
                         />
                     </div>
                     <div className="mb-2">
@@ -146,7 +143,7 @@ export const BookingModal = ({ retreat }) => {
                     <div className="mb-4">
                         <label className="block mb-2">Booking Date</label>
                         <input
-                            // type="date"
+                            type="text"
                             name="booking_date"
                             value={retreat?.date}
                             className="w-full p-2 rounded bg-gray-200 text-gray-900 focus:outline-0"
