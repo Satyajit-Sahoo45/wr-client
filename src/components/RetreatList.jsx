@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { BookingModal } from './Modal';
 import { MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -32,7 +31,7 @@ export const formatToStringDate = (dateString) => {
 
 const RetreatList = ({ retreats }) => {
     const [bookedRetreats, setBookedRetreats] = useState([]);
-    const { viewDetailsModal: isViewDetailsModal, isModalOpen } = useRetreatContext();
+    const { viewDetailsModal: isViewDetailsModal } = useRetreatContext();
 
 
     useEffect(() => {
@@ -52,7 +51,7 @@ const RetreatList = ({ retreats }) => {
     return (
         <div className="flex flex-wrap ">
             {retreats.map(retreat => (
-                <div key={retreat} className="w-full md:w-1/3 p-2">
+                <div key={retreat} className="w-full md:w-1/3 p-2 flex justify-center items-center">
 
                     <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 ">
                         <div className='absolute top-0 right-0 text-white px-4 py-1 rounded-bl-lg z-20 flex gap-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-primary-foreground border-0'>

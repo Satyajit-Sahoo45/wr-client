@@ -63,12 +63,12 @@ const BookedRetreats = ({ retreats }) => {
     return (
         <>
             <Header />
-            <div className="flex flex-wrap justify-center items-center h-screen bg-slate-200">
+            <div className="flex justify-center items-center w-full h-screen bg-slate-200">
                 {bookedRetreats.length === 0 ? (
                     <h2 className="text-xl font-semibold">No data available</h2>
                 ) : (
                     bookedRetreats.map(retreat => (
-                        <div key={retreat} className="w-full md:w-1/3 p-2">
+                        <div key={retreat} className="w-full flex justify-center items-center md:w-1/3 p-2">
                             <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
                                 <div className="text-sm text-gray-600 items-center flex justify-between px-6 py-2">
                                     <span className="mr-2 font-semibold flex gap-1 items-center">
