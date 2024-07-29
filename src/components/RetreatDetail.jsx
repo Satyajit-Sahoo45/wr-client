@@ -8,7 +8,7 @@ import axios from 'axios';
 const RetreatDetail = () => {
     const { id } = useParams();
     const [retreat, setRetreat] = useState(null);
-    const { setIsModalOpen } = useRetreatContext();
+    const { setIsModalOpen, isModalOpen } = useRetreatContext();
 
     useEffect(() => {
         const fetchRetreat = async () => {
@@ -50,7 +50,7 @@ const RetreatDetail = () => {
                     </button>
                 </div>
             </div>
-            <BookingModal retreat={retreat} />
+            {isModalOpen && <BookingModal retreat={retreat} />}
         </div>
     );
 };

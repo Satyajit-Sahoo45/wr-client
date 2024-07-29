@@ -32,7 +32,7 @@ export const formatToStringDate = (dateString) => {
 
 const RetreatList = ({ retreats }) => {
     const [bookedRetreats, setBookedRetreats] = useState([]);
-    const { viewDetailsModal: isViewDetailsModal } = useRetreatContext();
+    const { viewDetailsModal: isViewDetailsModal, isModalOpen } = useRetreatContext();
 
 
     useEffect(() => {
@@ -103,7 +103,7 @@ const RetreatList = ({ retreats }) => {
             ))
             }
 
-            <BookingModal />
+            {isModalOpen && <BookingModal />}
             {
                 isViewDetailsModal &&
                 <ViewDetailsModal />
