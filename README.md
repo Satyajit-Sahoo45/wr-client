@@ -2,7 +2,7 @@
 
 ## Clone the Repository:
 
-[In the project directory, you can run:](https://github.com/Satyajit-Sahoo45/ws-client.git)
+"https://github.com/Satyajit-Sahoo45/ws-client.git"
 
 ## Install Dependencies:
 
