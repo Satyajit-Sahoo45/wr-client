@@ -7,9 +7,11 @@ import toast from "react-hot-toast";
 export const BookingModal = ({ retreat }) => {
     const { isModalOpen, setIsModalOpen } = useRetreatContext();
     const [formData, setFormData] = useState({
+        user_id: localStorage.getItem('user').id,
         user_name: "",
         user_email: "",
         user_phone: "",
+        retreat_id: retreat.id,
         retreat_title: retreat?.title || "",
         retreat_location: retreat?.location || "",
         retreat_price: retreat?.price || "",
