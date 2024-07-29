@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BookingModal } from './Modal';
 import { useRetreatContext } from '../context/RetreatContext';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const RetreatDetail = () => {
     const { id } = useParams();
@@ -9,10 +11,16 @@ const RetreatDetail = () => {
     const { setIsModalOpen } = useRetreatContext();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BACKEND_API_URL}retreats/${id}`)
-            .then(response => response.json())
-            .then(data => setRetreat(data))
-            .catch(error => console.error('Error fetching retreat:', error));
+        const fetchRetreat = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}retreats/${id}`);
+                setRetreat(response.data);
+            } catch (error) {
+                toast.error(`Error fetching retreat: ${error.message}`);
+            }
+        };
+
+        fetchRetreat();
     }, [id]);
 
     if (!retreat) {

@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import { useRetreatContext } from "../context/RetreatContext";
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const BookingModal = ({ retreat }) => {
     const { isModalOpen, setIsModalOpen } = useRetreatContext();
@@ -30,11 +31,11 @@ export const BookingModal = ({ retreat }) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}book`, formData);
             if (response.status === 201) {
-                alert('Booking successful!');
+                toast.success('Booking successful');
                 closeModal();
             }
         } catch (error) {
-            console.error('There was an error booking the retreat!', error);
+            toast.error('There was an error booking the retreat!', error);
         }
     };
 

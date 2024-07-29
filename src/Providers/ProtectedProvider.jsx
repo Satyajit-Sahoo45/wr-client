@@ -7,7 +7,6 @@ const ProtectedProvider = ({ children }) => {
     useEffect(() => {
         const access_token = localStorage.getItem('ACCESS_TOKEN');
         if (!access_token && access_token !== undefined) {
-            console.log(access_token, "joipo-oo0lklk")
             navigate("/login")
         }
     }, [navigate])

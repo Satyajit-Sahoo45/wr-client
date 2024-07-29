@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -11,18 +12,24 @@ export const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        let res = undefined
+        try {
+            setLoader(true)
+            res = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}login`, { email, password });
 
-        setLoader(true)
+            if (res?.status === 200) {
+                localStorage.setItem("ACCESS_TOKEN", res.data.access_token)
+                localStorage.setItem("user", JSON.stringify(res.data.user_data))
+                setLoader(false)
+                navigate("/")
+            }
 
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}login`, { email, password });
-
-        if (res?.status === 200) {
-            console.log(res)
-            localStorage.setItem("ACCESS_TOKEN", res.data.access_token)
-            localStorage.setItem("user", JSON.stringify(res.data.user_data))
-            setLoader(false)
-            navigate("/")
+        } catch (error) {
+            toast.error(error.message)
+        } finally {
+            toast.success(res.data.message)
         }
+
     }
 
     return <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">

@@ -4,9 +4,7 @@ import SearchBar from './SearchBar';
 import RetreatList from './RetreatList';
 import Pagination from './Pagination';
 import axios from 'axios';
-import { LogOut } from 'lucide-react';
 import { useRetreatContext } from '../context/RetreatContext';
-import { Link, useNavigate } from 'react-router-dom';
 import { Header } from './Header';
 
 
@@ -17,21 +15,18 @@ function Retreat() {
     const [currentPage, setCurrentPage] = useState(1);
     const retreatsPerPage = 6;
     const { isModalOpen, setIsModalOpen } = useRetreatContext();
-    const navigate = useNavigate()
 
     useEffect(() => {
         const getRetreatData = async () => {
             const res = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}retreats`);
             setRetreats(res.data)
         }
-
         getRetreatData()
     }, [])
 
     const handleFilterChange = (newFilter) => {
         setFilter(newFilter);
         setCurrentPage(1);
-        console.log(newFilter)
     };
 
     const handleSearchChange = (event) => {
@@ -40,7 +35,6 @@ function Retreat() {
     };
 
     const filteredRetreats = retreats.filter(retreat => {
-        console.log(retreat, "retreatretreat")
         const retreatDate = new Date(retreat.date);
         const filterDate = new Date(filter.date);
         const isDateMatch = filter.date === '' || retreatDate.toDateString() === filterDate.toDateString();

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
@@ -20,7 +21,7 @@ export const Signup = () => {
                 navigate("/login");
             }
         } catch (error) {
-            console.error("Registration error:", error);
+            toast.error("Registration error:", error.message);
         } finally {
             setLoader(false);
         }

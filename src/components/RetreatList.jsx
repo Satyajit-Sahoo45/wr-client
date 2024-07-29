@@ -43,7 +43,7 @@ const RetreatList = ({ retreats }) => {
         };
 
         fetchBookedRetreats();
-    }, []);
+    }, [retreats]);
 
     const isRetreatBooked = (retreatId) => {
         return bookedRetreats.some(booking => booking.retreat_id === retreatId);

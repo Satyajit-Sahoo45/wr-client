@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRetreatContext } from '../context/RetreatContext';
 import { ViewDetailsModal } from './ViewDetailsModal';
 import { Header } from './Header';
+import toast from 'react-hot-toast';
 
 const BookedRetreats = ({ retreats }) => {
     const [bookedRetreats, setBookedRetreats] = useState([]);
@@ -42,7 +43,7 @@ const BookedRetreats = ({ retreats }) => {
                 const res = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}bookings?user_id=${user.id}`);
                 setBookedRetreats(res.data);
             } catch (error) {
-                console.error('Error fetching booked retreats:', error);
+                toast.error('Error fetching booked retreats:', error.message);
             } finally {
                 setLoading(false);
             }
