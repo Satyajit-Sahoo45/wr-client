@@ -17,7 +17,7 @@ export const BookingModal = ({ retreat }) => {
         retreat_location: retreat?.location || "",
         retreat_price: retreat?.price || "",
         retreat_duration: retreat?.duration || "",
-        payment_details: "",
+        payment_details: "Payment made via credit card.",
         booking_date: retreat?.date || "",
     });
 
