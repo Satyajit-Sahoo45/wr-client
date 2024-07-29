@@ -103,7 +103,7 @@ const RetreatList = ({ retreats }) => {
             ))
             }
 
-            {isModalOpen && <BookingModal />}
+            {/* {isModalOpen && <BookingModal />} */}
             {
                 isViewDetailsModal &&
                 <ViewDetailsModal />

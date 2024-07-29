@@ -50,7 +50,7 @@ const RetreatDetail = () => {
                     </button>
                 </div>
             </div>
-            {isModalOpen && <BookingModal retreat={retreat} />}
+            {isModalOpen && retreat && <BookingModal retreat={retreat} />}
         </div>
     );
 };

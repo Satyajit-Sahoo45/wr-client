@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 const BookedRetreats = ({ retreats }) => {
     const [bookedRetreats, setBookedRetreats] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { setViewDetailsModal, viewDetailsModal: isViewDetailsModal } = useRetreatContext();
+    const { isModalOpen, setViewDetailsModal, viewDetailsModal: isViewDetailsModal } = useRetreatContext();
 
     const formatToStringDate = (dateString) => {
         const months = [
@@ -106,7 +106,6 @@ const BookedRetreats = ({ retreats }) => {
                         </div>
                     ))
                 )}
-                <BookingModal />
                 {isViewDetailsModal && <ViewDetailsModal />}
             </div>
         </>
